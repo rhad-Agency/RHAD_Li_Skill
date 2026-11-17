@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Analyse images/videos with ffprobe + ffmpeg before any copy or generation decision.
 // Usage: node analyze-media.mjs <file...> [--out dir] [--max-frames 24] [--scene 0.30] [--no-audio]
-import { spawnSync } from 'node:child_process';
+import { findTool, runTool, INSTALL_HINT } from './lib/tools.mjs';
 import { mkdirSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { basename, extname, join, resolve } from 'node:path';
 
@@ -18,12 +18,13 @@ for (let i = 0; i < args.length; i++) {
 }
 if (!files.length) { console.error('Usage: analyze-media.mjs <file...> [--out dir]'); process.exit(2); }
 
-const run = (cmd, a, o = {}) => spawnSync(cmd, a, { encoding: 'utf8', maxBuffer: 256 * 1024 * 1024, ...o });
+const TOOLS = {};
+const run = (cmd, a, o = {}) => runTool(TOOLS[cmd] || { path: cmd }, a, o);
 for (const t of ['ffmpeg', 'ffprobe']) {
-  if (run(t, ['-version']).status !== 0) {
-    console.error(`${t} not found on PATH. Install ffmpeg (Windows: winget install Gyan.FFmpeg) or run scripts/install-skills.ps1.`);
-    process.exit(3);
-  }
+  const f = findTool(t);
+  if (!f) { console.error(`${t} not found (not on PATH and not in the usual install folders).\n${INSTALL_HINT[t]}`); process.exit(3); }
+  TOOLS[t] = f;
+  if (f.via !== 'PATH') console.error(`note: ${t} found at ${f.path} (not on PATH in this shell)`);
 }
 
 const IMG = new Set(['.png', '.jpg', '.jpeg', '.webp', '.gif', '.bmp', '.tif', '.tiff', '.avif', '.heic']);

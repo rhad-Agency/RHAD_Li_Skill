@@ -12,7 +12,7 @@
       "name": "rhad-linkedin",
       "source": "./plugins/rhad-linkedin",
       "description": "RHAD-branded LinkedIn post production: brief intake, ffmpeg media analysis, hooks and copy in RHAD voice, poster, carousel and video visuals, concept-first ChatGPT image prompts, brand lint and an approval step. Covers RHAD and RHAD45. Bundles motion-designer, ad-creative, content-pattern-analyzer-sms, platform-strategy-sms and social-seo-researcher.",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "author": {
         "name": "RHAD",
         "url": "https://www.rhad.agency/"

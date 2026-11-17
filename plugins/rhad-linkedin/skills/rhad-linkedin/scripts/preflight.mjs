@@ -6,6 +6,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { findTool, INSTALL_HINT } from './lib/tools.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const man = JSON.parse(readFileSync(join(here, 'skills-manifest.json'), 'utf8'));
@@ -34,13 +35,16 @@ const have = listSkills();
 const res = { agents: [], tools: [], skills: [], bundled: [] };
 res.agents.push({ id: 'claude', ok: has('claude') || existsSync(join(home, '.claude')) });
 res.agents.push({ id: 'codex', ok: has('codex') || existsSync(join(home, '.codex')) });
-for (const t of man.tools) res.tools.push({ id: t.id, ok: has(t.check[0], t.check.slice(1)) });
+for (const t of man.tools) {
+  const f = findTool(t.id) || (t.id === 'ffprobe' ? null : null);
+  res.tools.push({ id: t.id, ok: !!f || (!['ffmpeg', 'ffprobe', 'playwright-cli'].includes(t.id) && has(t.check[0], t.check.slice(1))), path: f?.path, via: f?.via });
+}
 for (const s of man.skills) res.skills.push({ id: s.id, ok: s.dirs.some((d) => have.has(d.toLowerCase())) });
 for (const b of man.bundled) res.bundled.push({ id: b, ok: have.has(b.toLowerCase()) });
 res.self = { id: 'rhad-linkedin', ok: have.has('rhad-linkedin') };
 
 if (process.argv.includes('--json')) { console.log(JSON.stringify(res, null, 2)); process.exit(0); }
-const row = (g, name) => { console.log(`\n${name}`); for (const x of res[g]) console.log(`  ${x.ok ? 'OK     ' : 'MISSING'}  ${x.id}`); };
+const row = (g, name) => { console.log(`\n${name}`); for (const x of res[g]) console.log(`  ${x.ok ? 'OK     ' : 'MISSING'}  ${x.id}${x.ok && x.via && x.via !== 'PATH' ? `   (found at ${x.path}, not on PATH in this shell)` : ''}${!x.ok && INSTALL_HINT[x.id] ? `\n             ${INSTALL_HINT[x.id]}` : ''}`); };
 row('agents', 'Agents detected (at least one needed)'); row('tools', 'Tools'); row('skills', 'Companion skills'); row('bundled', 'Bundled skills');
 console.log(`\nrhad-linkedin skill itself: ${res.self.ok ? 'found' : 'NOT FOUND in a skills folder'}`);
 const missing = [...res.tools, ...res.skills, ...res.bundled].filter((x) => !x.ok);

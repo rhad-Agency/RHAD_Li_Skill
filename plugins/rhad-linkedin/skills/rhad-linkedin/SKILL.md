@@ -2,7 +2,7 @@
 name: rhad-linkedin
 description: "End-to-end RHAD-branded LinkedIn post production: brief intake, ffmpeg analysis of any supplied image or video, hooks and copy in RHAD voice, on-brand visuals (static, carousel PDF, motion video), image-generation prompts for ChatGPT, brand lint, and an approval pack. Use whenever the user asks for a LinkedIn post, carousel, document post, video post, caption, or LinkedIn creative for RHAD (@rhad.agency) or RHAD45, or says 'make a post', 'turn this into a LinkedIn post', 'RHAD post', 'LinkedIn carousel', 'post this image/video'. Ships the RHAD and RHAD45 brand guides, logos, fonts, design tokens and master image prompt, and installs its companion skills. Never publishes without an explicit yes."
 metadata:
-  version: 1.1.0
+  version: 1.1.1
   owner: RHAD
 ---
 

@@ -94,6 +94,12 @@ After any install, restart the agent and run:
 node <skills folder>/rhad-linkedin/scripts/preflight.mjs
 ```
 
+## Troubleshooting
+
+- **Preflight says ffmpeg, ffprobe or playwright-cli are missing, but they work in your terminal.** Agent shells (Codex especially) can start with a shorter PATH. The scripts also search the usual install folders. If a tool is somewhere unusual, set `FFMPEG_PATH`, `FFPROBE_PATH` or `PLAYWRIGHT_CLI_PATH` to the full file path in the environment the agent starts from.
+- **Skill not listed after install.** Restart the agent. Codex also supports project skills in `<project>/.agents/skills`, so a skill installed into a project is visible only in that project.
+- **Codex cannot read your media or write results.** Codex sandboxes limit file access to the project. Copy the media into the project folder, or allow access, and pass `--out` inside the project.
+
 ## Third-party dependencies
 
 Installed by the installer after you confirm. Every command is printed before it runs. The commands for each agent live in `plugins/rhad-linkedin/skills/rhad-linkedin/scripts/skills-manifest.json`. Reasons and details: `references/skills-registry.md`.

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
+- Fixed: ffmpeg, ffprobe and playwright-cli were reported missing inside Codex because agent shells have a shorter PATH than your terminal. `scripts/lib/tools.mjs` now finds them in the usual install folders (WinGet Links, npm global, Homebrew, scoop, chocolatey) and honours `FFMPEG_PATH`, `FFPROBE_PATH`, `PLAYWRIGHT_CLI_PATH`. Used by `analyze-media.mjs` and `preflight.mjs`
+
 ## 1.1.0
 
 - Works in Claude Code and Codex from one copy of the skills: shared plugin directory `plugins/rhad-linkedin` with `.claude-plugin` and `.codex-plugin` manifests, a Codex marketplace at `.agents/plugins/marketplace.json`, `agents/openai.yaml`, plugin icons
