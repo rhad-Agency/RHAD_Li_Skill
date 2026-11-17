@@ -96,6 +96,8 @@ node <skills folder>/rhad-linkedin/scripts/preflight.mjs
 
 ## Troubleshooting
 
+- **A third-party install failed.** The installer verifies each item after installing and prints the reason, a specific next step and an exact retry command. In an interactive terminal it also asks whether to retry (up to 5 rounds) or skip. When an agent runs it, it cannot prompt, so it prints the retry command and exits with code 3. Retry only the failures with `install-skills.ps1 -Agent <a> -Only id1,id2 -Yes` (or `ONLY="id1 id2" bash install-skills.sh --agent <a> --yes`), or skip them with `-Skip`. Everything except ffmpeg and a browser is optional for the main skill.
+
 - **Preflight says ffmpeg, ffprobe or playwright-cli are missing, but they work in your terminal.** Agent shells (Codex especially) can start with a shorter PATH. The scripts also search the usual install folders. If a tool is somewhere unusual, set `FFMPEG_PATH`, `FFPROBE_PATH` or `PLAYWRIGHT_CLI_PATH` to the full file path in the environment the agent starts from.
 - **Skill not listed after install.** Restart the agent. Codex also supports project skills in `<project>/.agents/skills`, so a skill installed into a project is visible only in that project.
 - **Codex cannot read your media or write results.** Codex sandboxes limit file access to the project. Copy the media into the project folder, or allow access, and pass `--out` inside the project.
@@ -127,7 +129,7 @@ Ask Claude Code or Codex:
 - "RHAD45 poster post about missed enquiries"
 - "Turn this video into a LinkedIn post" (give the file path. It is analysed with ffmpeg first)
 
-Hard rules it enforces: brand first, analyse media before deciding, never invent facts, concept brief before every image, no numbers on carousel slides, no unnecessary headlines or category names, ChatGPT for image generation, no publishing without a yes.
+Hard rules it enforces: verify brand, information, goal, platform and audience before starting and never assume; the user critiques at five checkpoints before anything is final; brand first, analyse media before deciding, never invent facts, concept brief before every image, no numbers on carousel slides, no unnecessary headlines or category names, ChatGPT for image generation, no publishing without a yes.
 
 ## Scripts (inside `skills/rhad-linkedin/scripts/`)
 

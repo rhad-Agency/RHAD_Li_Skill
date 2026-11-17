@@ -51,3 +51,4 @@ if ($DryRun) { $args2 += '-DryRun' }
 if ($Only.Count) { $args2 += @('-Only', ($Only -join ',')) }
 if ($Skip.Count) { $args2 += @('-Skip', ($Skip -join ',')) }
 powershell @args2
+exit $LASTEXITCODE

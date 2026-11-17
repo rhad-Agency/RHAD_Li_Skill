@@ -107,6 +107,16 @@ const refs = [...new Set([...sk.matchAll(/`((?:references|assets|scripts)\/[A-Za
 for (const r of refs) { if (r.includes('*') || r.endsWith('/')) continue; if (!existsSync(join(base, r))) fail(`SKILL.md references missing file ${r}`); }
 ok(`${refs.length} paths referenced in SKILL.md checked`);
 
+// 7b. Verification gate, critique checkpoints and installer failure handling must stay in place
+{
+  const need = [['SKILL.md', /Verify, never assume/], ['SKILL.md', /Step 1: Intake and verification gate/], ['SKILL.md', /## Checkpoints: the user critiques before anything is final/], ['references/qa-checklist.md', /Verification and critique/]];
+  for (const [f, re] of need) re.test(rd(join(base, f))) ? ok(`${f}: ${re.source.slice(0, 40)}`) : fail(`${f} is missing: ${re}`);
+  const ps = rd(join(base, 'scripts/install-skills.ps1')), sh = rd(join(base, 'scripts/install-skills.sh'));
+  /Show-Failures/.test(ps) && /Retry the failed items/.test(ps) && /show_failures/.test(sh) && /Retry the failed items/.test(sh) ? ok('installers verify, explain and offer retry') : fail('installers lost failure handling');
+  const mm = JSON.parse(rd(join(base, 'scripts/skills-manifest.json')));
+  for (const s of [...mm.tools, ...mm.skills]) if (!s.fix) fail(`manifest: ${s.id} has no "fix" hint`);
+}
+
 // 8. Skills manifest covers both agents
 const man = J(join(base, 'scripts/skills-manifest.json'));
 if (man) {

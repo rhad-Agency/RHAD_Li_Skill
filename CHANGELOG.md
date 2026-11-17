@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0
+
+- New hard rule: **verify, never assume.** The skill checks the first message for brand, information, goal, target platform and audience, asks about every gap, reads the brief back and waits for a yes before any work. Step 1 is now a mandatory verification gate
+- New hard rule: **the user critiques before anything is final.** Five checkpoints (brief, concept and hook, copy, visual, final pack). At each, the skill gives its own critique first, asks for the user's, revises, and only continues on approval. Decisions are recorded in `copy.md`
+- Installers verify every third-party install, explain each failure with a specific next step, offer to retry in an interactive terminal (up to 5 rounds), print an exact retry command otherwise, and exit with code 3 when something failed. New `-Manifest` / `MANIFEST`, `-NoRetry` / `--no-retry` options and a `fix` hint per dependency in `skills-manifest.json`
+- Kept from 1.1.x: shared plugin for Claude Code and Codex, per-agent dependency commands, PATH-independent tool locator, packaged fonts and local render server
+
 ## 1.1.1
 
 - Fixed: ffmpeg, ffprobe and playwright-cli were reported missing inside Codex because agent shells have a shorter PATH than your terminal. `scripts/lib/tools.mjs` now finds them in the usual install folders (WinGet Links, npm global, Homebrew, scoop, chocolatey) and honours `FFMPEG_PATH`, `FFPROBE_PATH`, `PLAYWRIGHT_CLI_PATH`. Used by `analyze-media.mjs` and `preflight.mjs`

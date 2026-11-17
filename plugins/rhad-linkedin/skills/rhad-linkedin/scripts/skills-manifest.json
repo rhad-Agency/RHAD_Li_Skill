@@ -8,7 +8,8 @@
       ],
       "win": "winget install -e --id Gyan.FFmpeg",
       "mac": "brew install ffmpeg",
-      "linux": "sudo apt-get install -y ffmpeg"
+      "linux": "sudo apt-get install -y ffmpeg",
+      "fix": "Install it yourself: Windows `winget install -e --id Gyan.FFmpeg` in a normal terminal (or download from https://www.gyan.dev/ffmpeg/builds/), macOS `brew install ffmpeg`, Linux `sudo apt-get install ffmpeg`. Then open a new terminal. If it lives somewhere unusual, set FFMPEG_PATH and FFPROBE_PATH to the full file paths. Without it, media analysis and video export do not work."
     },
     {
       "id": "ffprobe",
@@ -16,7 +17,8 @@
         "ffprobe",
         "-version"
       ],
-      "note": "installed with ffmpeg"
+      "note": "installed with ffmpeg",
+      "fix": "Comes with ffmpeg. Install ffmpeg, or set FFPROBE_PATH to the full file path."
     },
     {
       "id": "node",
@@ -24,7 +26,8 @@
         "node",
         "--version"
       ],
-      "note": "Node 22+ recommended (taste-skill needs it)"
+      "note": "Node 22+ recommended (taste-skill needs it)",
+      "fix": "Install Node 22 or newer from https://nodejs.org, then open a new terminal."
     },
     {
       "id": "playwright-cli",
@@ -35,7 +38,8 @@
       "all": [
         "npm install -g @playwright/cli@latest",
         "playwright-cli install --skills"
-      ]
+      ],
+      "fix": "Run `npm install -g @playwright/cli@latest` in a normal terminal (a global npm install can need an admin terminal or an npm prefix you own: `npm config set prefix ~/.npm-global`). Then `playwright-cli install --skills`. Optional: the renderer also works with Chrome or Edge alone."
     }
   ],
   "placeholders": {
@@ -61,7 +65,8 @@
       "all": [
         "npx --yes impeccable install"
       ],
-      "note": "interactive: pick your agent and say yes to the design hook"
+      "note": "interactive: pick your agent and say yes to the design hook",
+      "fix": "It is an interactive installer. Run `npx impeccable install` in a normal terminal, pick your agent (Claude Code or Codex) and say yes to the design hook. Optional: only used for design critique."
     },
     {
       "id": "taste-skill",
@@ -71,7 +76,8 @@
       ],
       "all": [
         "npx --yes skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend -g -a {skillsAgent} -y"
-      ]
+      ],
+      "fix": "Run the command in a normal terminal with network access and Node 22 or newer. Optional: only used for the look-and-fix design loop."
     },
     {
       "id": "hyperframes",
@@ -80,7 +86,8 @@
       ],
       "all": [
         "npx --yes hyperframes skills update"
-      ]
+      ],
+      "fix": "Run `npx hyperframes skills update` in a normal terminal. Needed only for HTML-to-video work."
     },
     {
       "id": "remotion",
@@ -90,7 +97,8 @@
       ],
       "all": [
         "npx --yes skills add remotion-dev/skills -g -a {skillsAgent} -y"
-      ]
+      ],
+      "fix": "Run the command in a normal terminal. Needed only for React-to-video work. Remotion has its own licence terms for commercial use."
     },
     {
       "id": "ui-ux-pro-max",
@@ -102,7 +110,8 @@
         "npm install -g ui-ux-pro-max-cli",
         "uipro init --ai {uiproAgent} -g"
       ],
-      "note": "also installs banner-design, brand, design, design-system, slides and ui-styling; use -Skip ui-ux-pro-max if those names clash with skills you already have"
+      "note": "also installs banner-design, brand, design, design-system, slides and ui-styling; use -Skip ui-ux-pro-max if those names clash with skills you already have",
+      "fix": "Run `npm install -g ui-ux-pro-max-cli`, then `uipro init --ai claude -g` (or `--ai codex -g`) in a normal terminal. It also adds several design skills; use -Skip ui-ux-pro-max to leave it out. Optional: only used for UX and accessibility checks."
     },
     {
       "id": "gsap-skills",
@@ -113,7 +122,8 @@
       ],
       "all": [
         "npx --yes skills add https://github.com/greensock/gsap-skills -g -a {skillsAgent} -y"
-      ]
+      ],
+      "fix": "Run the command in a normal terminal with network access. Optional: only used for GSAP animation work."
     },
     {
       "id": "linkedin-skills",
@@ -125,7 +135,8 @@
       "all": [
         "npx --yes skills add sergebulaev/linkedin-skills -g -a {skillsAgent} -y"
       ],
-      "note": "installs the bundle as linkedin-marketing with 12 sub-skills; flagged medium risk by skills.sh scanners, review before use; can publish via Publora"
+      "note": "installs the bundle as linkedin-marketing with 12 sub-skills; flagged medium risk by skills.sh scanners, review before use; can publish via Publora",
+      "fix": "Run the command in a normal terminal. It installs the bundle as linkedin-marketing. Optional: the post-writer and humanizer add extra LinkedIn tools. The main skill works without it."
     }
   ],
   "bundled": [

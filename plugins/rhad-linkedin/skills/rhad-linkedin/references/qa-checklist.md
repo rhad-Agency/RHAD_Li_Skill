@@ -2,6 +2,14 @@
 
 Mark each line pass, fail (fixed), or n/a in `qa.md`. Do not deliver with an open fail.
 
+## Verification and critique
+
+- [ ] The first message was read for brand, information, goal, platform and audience. Every gap was asked about, none guessed
+- [ ] The brief was read back and the user confirmed it (checkpoint 1)
+- [ ] Concept and hook, copy, visual and final pack each went through a critique round (checkpoints 2 to 5). Own critique given first, user critique asked, changes shown
+- [ ] Any assumption the user explicitly accepted is listed in `copy.md`
+- [ ] "Decisions and changes" recorded
+
 ## Brand
 
 - [ ] One brand only (RHAD or RHAD45). No cross-contamination of palette, logo, voice
