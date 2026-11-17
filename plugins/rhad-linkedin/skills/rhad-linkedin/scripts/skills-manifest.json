@@ -70,7 +70,7 @@
         "design-taste-frontend"
       ],
       "all": [
-        "npx --yes skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend -g -a {skillsAgent}"
+        "npx --yes skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend -g -a {skillsAgent} -y"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "remotion"
       ],
       "all": [
-        "npx --yes skills add remotion-dev/skills -g -a {skillsAgent}"
+        "npx --yes skills add remotion-dev/skills -g -a {skillsAgent} -y"
       ]
     },
     {
@@ -100,8 +100,9 @@
       ],
       "all": [
         "npm install -g ui-ux-pro-max-cli",
-        "uipro init --ai {uiproAgent}"
-      ]
+        "uipro init --ai {uiproAgent} -g"
+      ],
+      "note": "also installs banner-design, brand, design, design-system, slides and ui-styling; use -Skip ui-ux-pro-max if those names clash with skills you already have"
     },
     {
       "id": "gsap-skills",
@@ -111,22 +112,20 @@
         "gsap-skills"
       ],
       "all": [
-        "npx --yes skills add https://github.com/greensock/gsap-skills -g -a {skillsAgent}"
+        "npx --yes skills add https://github.com/greensock/gsap-skills -g -a {skillsAgent} -y"
       ]
     },
     {
       "id": "linkedin-skills",
       "dirs": [
+        "linkedin-marketing",
         "linkedin-post-writer",
         "linkedin-skills"
       ],
-      "claude": [
-        "claude plugin marketplace add sergebulaev/linkedin-skills",
-        "claude plugin install linkedin-skills@linkedin-skills"
+      "all": [
+        "npx --yes skills add sergebulaev/linkedin-skills -g -a {skillsAgent} -y"
       ],
-      "codex": [
-        "npx --yes skills add sergebulaev/linkedin-skills -g -a {skillsAgent}"
-      ]
+      "note": "installs the bundle as linkedin-marketing with 12 sub-skills; flagged medium risk by skills.sh scanners, review before use; can publish via Publora"
     }
   ],
   "bundled": [

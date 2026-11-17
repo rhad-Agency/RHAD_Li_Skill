@@ -12,9 +12,9 @@
 | **taste-skill** | github.com/Leonxlnx/taste-skill | `npx skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend -g -a <agent>` | Anti-slop art direction and look-and-fix loop (brand overrides its direction) |
 | **hyperframes** | github.com/heygen-com/hyperframes | `npx hyperframes skills update` (core set) | HTML to video |
 | **remotion** | github.com/remotion-dev/skills | `npx skills add remotion-dev/skills -g -a <agent>` | React to video |
-| **ui-ux-pro-max (uiuxpro)** | github.com/nextlevelbuilder/ui-ux-pro-max-skill | `npm install -g ui-ux-pro-max-cli` then `uipro init --ai claude` or `--ai codex` | UX and accessibility checks |
+| **ui-ux-pro-max (uiuxpro)** | github.com/nextlevelbuilder/ui-ux-pro-max-skill | `npm install -g ui-ux-pro-max-cli` then `uipro init --ai claude -g` or `--ai codex -g`. Without `-g` it installs into the current folder. It also adds banner-design, brand, design, design-system, slides and ui-styling | UX and accessibility checks |
 | **gsap-skills ("GASP")** | github.com/greensock/gsap-skills | `npx skills add https://github.com/greensock/gsap-skills -g -a <agent>` | Correct GSAP timelines for motion |
-| **linkedin-skills** | github.com/sergebulaev/linkedin-skills (MIT) | Claude Code: `claude plugin marketplace add sergebulaev/linkedin-skills` then `claude plugin install linkedin-skills@linkedin-skills`. Codex: `npx skills add sergebulaev/linkedin-skills -g -a codex` | 12 LinkedIn skills: post-writer, humanizer, hook-extractor, content-planner, repurposer, profile-optimizer, comment-drafter and more |
+| **linkedin-skills** | github.com/sergebulaev/linkedin-skills (MIT) | `npx skills add sergebulaev/linkedin-skills -g -a <agent> -y`. Installs as `linkedin-marketing` with 12 sub-skills. Scanners on skills.sh rate it medium risk and it can publish through Publora: review it, and keep this skill's rule that nothing is published without the user's yes |
 
 "Impecable", "Playwrite CLI", "Taste", "uiuxpro" and "GASP" in the original brief were mapped to the repositories above. If the user meant a different tool, change the list in `scripts/skills-manifest.json`.
 
