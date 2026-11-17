@@ -129,7 +129,7 @@ Ask Claude Code or Codex:
 - "RHAD45 poster post about missed enquiries"
 - "Turn this video into a LinkedIn post" (give the file path. It is analysed with ffmpeg first)
 
-Hard rules it enforces: verify brand, information, goal, platform and audience before starting and never assume; the user critiques at five checkpoints before anything is final; brand first, analyse media before deciding, never invent facts, concept brief before every image, no numbers on carousel slides, no unnecessary headlines or category names, ChatGPT for image generation, no publishing without a yes.
+Hard rules it enforces: verify brand, information, goal, platform and audience before starting and never assume; it pushes back on weak ideas with a reason and a better option, and agrees when the idea is right; the user critiques at five checkpoints before anything is final; it talks in plain words with at most three questions at a time; brand first, analyse media before deciding, never invent facts, concept brief before every image, no numbers on carousel slides, no unnecessary headlines or category names, ChatGPT for image generation, no publishing without a yes.
 
 ## Scripts (inside `skills/rhad-linkedin/scripts/`)
 

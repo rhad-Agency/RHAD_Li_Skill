@@ -9,6 +9,9 @@ Mark each line pass, fail (fixed), or n/a in `qa.md`. Do not deliver with an ope
 - [ ] Concept and hook, copy, visual and final pack each went through a critique round (checkpoints 2 to 5). Own critique given first, user critique asked, changes shown
 - [ ] Any assumption the user explicitly accepted is listed in `copy.md`
 - [ ] "Decisions and changes" recorded
+- [ ] Weak points in the brief and in the user's requests were challenged once, with a reason and an alternative. Nothing was accepted or praised by default, and no objection was invented
+- [ ] Requests that broke a hard rule were declined with the closest workable option
+- [ ] Messages to the user were short, in plain words, with at most three questions each and a recommended answer. No internal terms, file paths or tool output
 
 ## Brand
 

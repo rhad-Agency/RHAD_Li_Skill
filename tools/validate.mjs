@@ -109,7 +109,7 @@ ok(`${refs.length} paths referenced in SKILL.md checked`);
 
 // 7b. Verification gate, critique checkpoints and installer failure handling must stay in place
 {
-  const need = [['SKILL.md', /Verify, never assume/], ['SKILL.md', /Step 1: Intake and verification gate/], ['SKILL.md', /## Checkpoints: the user critiques before anything is final/], ['references/qa-checklist.md', /Verification and critique/]];
+  const need = [['SKILL.md', /Verify, never assume/], ['SKILL.md', /Step 1: Intake and verification gate/], ['SKILL.md', /## Checkpoints: the user critiques before anything is final/], ['SKILL.md', /Be a critic, not a yes-machine/], ['SKILL.md', /## Critic stance/], ['SKILL.md', /## How to talk to the user/], ['references/qa-checklist.md', /Verification and critique/]];
   for (const [f, re] of need) re.test(rd(join(base, f))) ? ok(`${f}: ${re.source.slice(0, 40)}`) : fail(`${f} is missing: ${re}`);
   const ps = rd(join(base, 'scripts/install-skills.ps1')), sh = rd(join(base, 'scripts/install-skills.sh'));
   /Show-Failures/.test(ps) && /Retry the failed items/.test(ps) && /show_failures/.test(sh) && /Retry the failed items/.test(sh) ? ok('installers verify, explain and offer retry') : fail('installers lost failure handling');

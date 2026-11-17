@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0
+
+- New hard rule: **be a critic, not a yes-machine.** The skill challenges weak briefs, ideas and change requests once, with a reason and a better option, then lets the user decide. It agrees plainly when an idea is better, never praises by default, never invents objections, and does not give way on hard rules. New "Critic stance" section
+- New "How to talk to the user" section: plain words, short messages, at most three questions at a time with options and a recommendation, propose-and-confirm for format, CTA, voice and timing, progress in one line, no internal terms or tool output
+- Step 1 now asks in short rounds and challenges the brief before confirming it. Simple text posts review the hook and copy together
+- QA checklist and repo validation cover both
+
 ## 1.2.0
 
 - New hard rule: **verify, never assume.** The skill checks the first message for brand, information, goal, target platform and audience, asks about every gap, reads the brief back and waits for a yes before any work. Step 1 is now a mandatory verification gate

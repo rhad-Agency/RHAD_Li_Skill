@@ -23,7 +23,7 @@ tools/build-skill.mjs               Builds dist/rhad-linkedin.skill
 2. Keep skills agent-neutral: plain Markdown, Node scripts, no Claude-only or Codex-only tool names without naming the equivalent.
 3. Bump the version in **all** of: `plugins/rhad-linkedin/.claude-plugin/plugin.json`, `plugins/rhad-linkedin/.codex-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `plugins/rhad-linkedin/skills/rhad-linkedin/SKILL.md` (`metadata.version`) and `CHANGELOG.md`. Validate checks they match.
 4. Codex limits: `interface.displayName` and `shortDescription` at most 30 characters, up to 3 default prompts of at most 128 characters. Validate enforces them.
-5. Keep the intake verification gate and the five critique checkpoints in `SKILL.md`. Do not weaken them.
+5. Keep the intake verification gate, the five critique checkpoints, the "Critic stance" and "How to talk to the user" sections in `SKILL.md`. Do not weaken them.
 6. Brand rules live in `plugins/rhad-linkedin/skills/rhad-linkedin/references/`. Do not mix RHAD (agency) and RHAD45 (product) voice, colour or logos. Never add credentials, personal contact details or client results. Keep the repo private.
 7. New dependencies go in `plugins/rhad-linkedin/skills/rhad-linkedin/scripts/skills-manifest.json` with a command for both agents, and in `references/skills-registry.md` and `THIRD_PARTY_NOTICES.md`.
 
