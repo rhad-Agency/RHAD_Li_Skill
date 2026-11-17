@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>RHAD poster post</title>
+<!--
+  Poster style, 1080x1350. Bold two-tone headline, one support line, a text-free object scene, CTA footer.
+  Read references/concept-first.md and references/poster-style.md first.
+  Replace: headline, support, CTA, the --plate image (text-free scene plate from ChatGPT), and any tags.
+  The plate below is a PLACEHOLDER crop from a finished RHAD45 poster. Never ship it.
+  For RHAD45 use the RHAD45 logo files. For RHAD use ../rhad/logos/rhad-logo-red-tight.png.
+-->
+<link rel="stylesheet" href="../tokens/rhad-tokens.css">
+<style>
+  @page { size: 1080px 1350px; margin: 0; }
+  :root {
+    --paper: #F4F1EC; --ink: #111418; --red: #D21131;
+    --plate: url("../imagery/poster-style/w02-p1-expensive-enquiry.jpg");
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--paper); font-family: var(--font-text); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  .poster { position: relative; width: 1080px; height: 1350px; padding: 72px; background: var(--paper); overflow: hidden; }
+  .logo { display: block; height: 52px; width: auto; }
+  h1 { font-family: var(--font-text); font-weight: 800; font-size: 116px; line-height: 1.0; letter-spacing: -.045em; margin-top: 44px; color: var(--ink); }
+  h1 .turn { color: var(--red); display: block; }
+  .support { font-weight: 500; font-size: 36px; line-height: 1.25; margin-top: 28px; max-width: 800px; }
+  /* Text-free scene plate. Keep it clear of the headline and footer. Tags (labels) sit on top of the objects they name. */
+  .art { position: absolute; left: 0; right: 0; top: 660px; height: 520px; background-image: var(--plate); background-size: 1080px auto; background-position: center -566px; background-repeat: no-repeat; }
+  .tag { position: absolute; font-weight: 700; font-size: 26px; background: #fff; color: var(--ink); padding: 8px 14px; transform: rotate(-2deg); }
+  .cta { position: absolute; left: 72px; bottom: 112px; font-weight: 600; font-size: 34px; display: flex; align-items: center; gap: 16px; }
+  .cta .arrow { color: var(--red); font-weight: 700; }
+  .url { position: absolute; left: 72px; bottom: 64px; font-weight: 500; font-size: 28px; color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="poster">
+  <img class="logo" src="../rhad45/logos/RHAD45-logo-primary.png" alt="RHAD45">
+  <h1>Say the problem plainly. <span class="turn">Then the fix.</span></h1>
+  <p class="support">One short line that says what to do.</p>
+  <div class="art" role="img" aria-label="[NEEDS: alt text describing the scene and what it stands for]"></div>
+  <div class="cta"><span>One clear next step</span><span class="arrow">&rarr;</span></div>
+  <div class="url">@rhad.agency</div>
+</div>
+</body>
+</html>

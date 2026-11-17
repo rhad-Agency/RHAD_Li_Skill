@@ -1,0 +1,11 @@
+{
+  "name": "rhad-linkedin",
+  "description": "RHAD-branded LinkedIn post production: brief intake, ffmpeg media analysis, hooks and copy in RHAD voice, poster, carousel and video visuals, concept-first ChatGPT image prompts, brand lint and an approval step. Covers RHAD and RHAD45.",
+  "version": "1.0.0",
+  "author": {
+    "name": "RHAD",
+    "url": "https://www.rhad.agency/"
+  },
+  "license": "UNLICENSED",
+  "keywords": ["linkedin", "brand", "carousel", "poster", "ffmpeg", "rhad", "rhad45", "social-media"]
+}

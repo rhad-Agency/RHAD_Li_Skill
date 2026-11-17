@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>RHAD carousel</title>
+<meta name="viewport" content="width=1080">
+<!-- RHAD carousel template. 1080x1350 per slide. Edit text only. Keep fonts and tokens. -->
+<link rel="stylesheet" href="../tokens/rhad-tokens.css">
+<style>
+  @page { size: 1080px 1350px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--rhad-white); }
+  body { font-family: var(--font-text); color: var(--rhad-ink); -webkit-font-smoothing: antialiased; }
+  .slide { position: relative; width: 1080px; height: 1350px; padding: var(--margin); background: var(--rhad-white); overflow: hidden; page-break-after: always; break-after: page; display: flex; flex-direction: column; }
+  .slide.ink { background: var(--rhad-ink); color: var(--rhad-white); }
+  .slide.red { background: var(--rhad-red); color: var(--rhad-white); }
+  body.single .slide { display: none; }
+  body.single .slide.active { display: flex; }
+
+  .top { display: flex; justify-content: space-between; font-weight: 600; font-size: 26px; letter-spacing: .01em; color: var(--rhad-ink-soft); }
+  .ink .top, .red .top { color: var(--rhad-on-dark-soft); }
+  .bottom { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; font-weight: 600; font-size: 26px; color: var(--rhad-ink-soft); }
+  .ink .bottom, .red .bottom { color: var(--rhad-on-dark-soft); }
+  .bottom img { height: 40px; width: auto; display: block; }
+  .arrow { font-family: var(--font-display); font-weight: 700; font-size: 44px; color: var(--rhad-red); }
+  .red .arrow { color: var(--rhad-white); }
+
+  h1, h2, .num { font-family: var(--font-display); letter-spacing: -.035em; }
+  h1 { font-weight: 800; font-size: 124px; line-height: .95; letter-spacing: -.04em; margin-top: 96px; }
+  h2 { font-weight: 700; font-size: 84px; line-height: 1.0; margin-top: 0; }
+  .slide > h2:first-child, .slide > .rule:first-child { margin-top: 96px; }
+  .accent { color: var(--rhad-red); }
+  .ink .accent { color: var(--rhad-white); }
+  .num { font-weight: 800; font-size: 260px; line-height: .85; letter-spacing: -.05em; margin-top: 64px; }
+  .sub { font-family: var(--font-display); font-weight: 600; font-size: 44px; line-height: 1.1; letter-spacing: -.02em; margin-top: 40px; }
+  p.body { font-size: 38px; line-height: 1.45; margin-top: 40px; max-width: 860px; }
+  .rule { width: 120px; height: 10px; background: var(--rhad-red); margin-top: 48px; }
+  .red .rule { background: var(--rhad-white); }
+  .source { font-size: 24px; color: var(--rhad-ink-soft); margin-top: 32px; }
+  .ink .source { color: var(--rhad-on-dark-soft); }
+  .hero { margin-top: 48px; margin-bottom: 32px; flex: 1; min-height: 0; background-size: contain; background-repeat: no-repeat; background-position: left bottom; }
+</style>
+</head>
+<body>
+
+<!-- RULES: no numbers on any slide (no counters, numbered points, stats, dates). No eyebrows, category names or repeated titles. Handle on first and last slide only. Order is shown by the arrow. -->
+
+<!-- COVER: stops the scroll. Max 8 words, or no headline if the image carries it. -->
+<section class="slide">
+  <div class="top"><span>@rhad.agency</span><span></span></div>
+  <h1>Say the one thing <span class="accent">clearly.</span></h1>
+  <!-- optional image: <div class="hero" style="background-image:url('../imagery/your-image.png')"></div> -->
+  <div class="bottom"><span></span><span class="arrow">&rarr;</span></div>
+</section>
+
+<!-- SWIPE SLIDE: earns the swipe. Must NOT restate the cover. -->
+<section class="slide">
+  <h2>The tension the cover did not give away.</h2>
+  <p class="body">One or two short sentences. Plain words. A real detail, not a summary of the cover.</p>
+  <div class="bottom"><span></span><span class="arrow">&rarr;</span></div>
+</section>
+
+<!-- POINT: one idea. No number, no label. -->
+<section class="slide">
+  <div class="rule"></div>
+  <div class="sub">One idea, said short.</div>
+  <p class="body">A few short sentences. One idea only. [NEEDS: real detail from the brief]</p>
+  <div class="bottom"><span></span><span class="arrow">&rarr;</span></div>
+</section>
+
+<!-- KEY LINE: one line to keep, on ink. No numerals. -->
+<section class="slide ink">
+  <h2>The line you want them to keep.</h2>
+  <div class="rule"></div>
+  <div class="bottom"><span></span><span class="arrow">&rarr;</span></div>
+</section>
+
+<!-- CLOSE: one CTA. Not a recap. -->
+<section class="slide red">
+  <h2>One next step.</h2>
+  <p class="body">Say it in one sentence. [NEEDS: the ask]</p>
+  <div class="bottom"><span>@rhad.agency</span><img src="../rhad/logos/rhad-logo-white-tight.png" alt="RHAD"></div>
+</section>
+
+<script>
+  // ?slide=N shows one slide (used by render-post.mjs). No param = all slides stacked (PDF).
+  const n = new URLSearchParams(location.search).get('slide');
+  if (n) { document.body.classList.add('single'); const s = document.querySelectorAll('.slide')[n-1]; if (s) s.classList.add('active'); }
+</script>
+</body>
+</html>

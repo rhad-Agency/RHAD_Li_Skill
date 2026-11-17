@@ -1,0 +1,18 @@
+/* RHAD (agency) design tokens. Source: RHAD EDGE type spec + rhad.agency audit. */
+@font-face { font-family: "Unbounded"; src: url("../fonts/Unbounded-Variable.ttf") format("truetype"); font-weight: 200 900; font-display: block; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("../fonts/PlusJakartaSans-Variable.ttf") format("truetype"); font-weight: 200 800; font-display: block; }
+
+:root {
+  --rhad-ink: #1F2124;
+  --rhad-ink-soft: #5B6169;
+  --rhad-white: #FFFFFF;
+  --rhad-red: #D90A2C;
+  --rhad-red-pressed: #B00822;
+  --rhad-on-dark-soft: #D6D7D9;
+
+  --font-display: "Unbounded", Arial, sans-serif;
+  --font-text: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --margin: 72px;
+  --s-1: 8px; --s-2: 16px; --s-3: 24px; --s-4: 32px; --s-5: 48px; --s-6: 72px; --s-7: 96px;
+}
