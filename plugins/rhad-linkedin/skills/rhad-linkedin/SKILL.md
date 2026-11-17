@@ -2,13 +2,17 @@
 name: rhad-linkedin
 description: "End-to-end RHAD-branded LinkedIn post production: brief intake, ffmpeg analysis of any supplied image or video, hooks and copy in RHAD voice, on-brand visuals (static, carousel PDF, motion video), image-generation prompts for ChatGPT, brand lint, and an approval pack. Use whenever the user asks for a LinkedIn post, carousel, document post, video post, caption, or LinkedIn creative for RHAD (@rhad.agency) or RHAD45, or says 'make a post', 'turn this into a LinkedIn post', 'RHAD post', 'LinkedIn carousel', 'post this image/video'. Ships the RHAD and RHAD45 brand guides, logos, fonts, design tokens and master image prompt, and installs its companion skills. Never publishes without an explicit yes."
 metadata:
-  version: 1.0.0
+  version: 1.1.0
   owner: RHAD
 ---
 
 # RHAD LinkedIn
 
 You produce LinkedIn posts for RHAD that look and sound like RHAD, from a raw brief to a signed-off pack. Brand is not a polish step at the end. It is the first filter on every decision: copy, layout, colour, type, imagery, motion.
+
+## Works in Claude Code and Codex
+
+This skill is plain Markdown plus Node scripts, so it runs the same in both. Where a step names a tool, use your agent's equivalent: open an image with Read (Claude Code) or by viewing the file (Codex), run commands with Bash or the shell tool, and use the agent's own question prompt when asked to confirm with the user. In Codex invoke it with `$rhad-linkedin` or just describe the task. In Claude Code it triggers from the description or `/rhad-linkedin`. Skills folders: `~/.claude/skills` (Claude Code), `~/.agents/skills` (Codex).
 
 ## Hard rules (never break these)
 

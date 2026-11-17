@@ -1,0 +1,10 @@
+interface:
+  display_name: "RHAD LinkedIn"
+  short_description: "RHAD-branded LinkedIn posts"
+  icon_small: "./assets/rhad/logos/rhad-logo-red-tight.png"
+  icon_large: "./assets/rhad/logos/rhad-logo-red.png"
+  brand_color: "#D90A2C"
+  default_prompt: "Make a RHAD LinkedIn post from this brief. Analyse any media first and write the concept brief before any image."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,74 +1,102 @@
-# rhad-linkedin-skill
+# RHAD_Li_Skill
 
-RHAD-branded LinkedIn post production for Claude Code. From a raw brief to a signed-off pack: intake, ffmpeg analysis of any supplied media, hooks and copy in RHAD voice, on-brand visuals (poster, carousel, video), ChatGPT image prompts built from a concept brief, brand lint, and an approval step. It never publishes without an explicit yes.
+RHAD-branded LinkedIn post production for **Claude Code and Codex**. From a raw brief to a signed-off pack: intake, ffmpeg analysis of any supplied media, hooks and copy in RHAD voice, on-brand visuals (poster, carousel, video), ChatGPT image prompts built from a concept brief, brand lint, and an approval step. It never publishes without an explicit yes.
 
 Covers two brands that are never mixed: **RHAD** (agency, @rhad.agency) and **RHAD45** (product line).
 
 > **Keep this repository private.** It ships internal brand guidance, the RHAD45 strategy documents, client names and reference creative. See [Privacy](#privacy).
 
+## One skill, two agents
+
+Both agents read the same `SKILL.md` folders, so there is one copy of every skill. Only the packaging differs.
+
+| | Claude Code | Codex |
+|---|---|---|
+| Skills folder | `~/.claude/skills` | `~/.agents/skills` (repo: `.agents/skills`) |
+| Plugin manifest | `plugins/rhad-linkedin/.claude-plugin/plugin.json` | `plugins/rhad-linkedin/.codex-plugin/plugin.json` |
+| Marketplace | `.claude-plugin/marketplace.json` | `.agents/plugins/marketplace.json` |
+| Optional skill metadata | not used | `skills/rhad-linkedin/agents/openai.yaml` |
+| Invoke | describe the task, or `/rhad-linkedin` | describe the task, or `$rhad-linkedin` |
+
 ## What is in the box
 
 | Path | What |
 |---|---|
-| `skills/rhad-linkedin/` | The skill: workflow, brand guides, voice, imagery and poster style, concept-first rule, master image prompt, templates, logos, fonts, reference images, scripts |
-| `skills/motion-designer/` | motion-kit by Hugh Minh Phan (MIT): hand-shaped curves and timing for video |
-| `skills/ad-creative/` | Ad headlines, descriptions, creative testing |
-| `skills/content-pattern-analyzer-sms/` | What topics, formats and times work, from your own data |
-| `skills/platform-strategy-sms/` | LinkedIn, X, Threads and Bluesky tactics |
-| `skills/social-seo-researcher/` | Hashtags, keywords, search-friendly captions and alt text |
-| `install.ps1`, `install.sh` | One-step install: copies the skills and installs third-party dependencies |
-| `tools/validate.mjs` | Repo checks (also run in CI) |
-| `tools/build-skill.mjs` | Builds a single self-contained `dist/rhad-linkedin.skill` |
-| `.claude-plugin/` | Plugin manifest and marketplace entry |
+| `plugins/rhad-linkedin/skills/rhad-linkedin/` | The skill: workflow, brand guides, voice, imagery and poster style, concept-first rule, master image prompt, templates, logos, fonts, reference images, scripts |
+| `plugins/rhad-linkedin/skills/motion-designer/` | motion-kit by Hugh Minh Phan (MIT): hand-shaped curves and timing for video |
+| `plugins/rhad-linkedin/skills/ad-creative/` | Ad headlines, descriptions, creative testing |
+| `plugins/rhad-linkedin/skills/content-pattern-analyzer-sms/` | What topics, formats and times work, from your own data |
+| `plugins/rhad-linkedin/skills/platform-strategy-sms/` | LinkedIn, X, Threads and Bluesky tactics |
+| `plugins/rhad-linkedin/skills/social-seo-researcher/` | Hashtags, keywords, search-friendly captions and alt text |
+| `install.ps1`, `install.sh` | One-step install for Claude Code, Codex or both |
+| `tools/validate.mjs`, `tools/build-skill.mjs` | Repo checks (also in CI) and single-file build |
+| `AGENTS.md`, `CLAUDE.md` | Guide for agents working on this repo |
 
 ## Install
 
-Pick one.
-
-### A. Plugin marketplace (Claude Code)
-
-```bash
-claude plugin marketplace add <your-org>/rhad-linkedin-skill
-claude plugin install rhad-linkedin@rhad-linkedin-skill
-```
-
-This installs the six skills. Run the dependency step below for the third-party tools.
-
-### B. Installer script (skills and dependencies in one go)
+### 1. Installer script (recommended): skills plus dependencies
 
 Windows:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File install.ps1 -DryRun   # preview, changes nothing
-powershell -ExecutionPolicy Bypass -File install.ps1           # install
+powershell -ExecutionPolicy Bypass -File install.ps1 -DryRun            # preview, changes nothing
+powershell -ExecutionPolicy Bypass -File install.ps1                    # auto-detect Claude Code and Codex
+powershell -ExecutionPolicy Bypass -File install.ps1 -Agent codex       # claude | codex | both | auto
 ```
 
 macOS and Linux:
 
 ```bash
 bash install.sh --dry-run
-bash install.sh
+bash install.sh                    # auto-detect
+bash install.sh --agent codex      # claude | codex | both | auto
 ```
 
-Options: `-Force` / `--force` overwrites skills already in `~/.claude/skills`. `-SkillsDir <path>` / `SKILLS_DIR=<path>` installs somewhere else. `-Only a,b` and `-Skip a,b` (PowerShell) limit the third-party installs.
+Options: `-Force` / `--force` overwrites skills already installed. `-SkillsDir <path>` / `SKILLS_DIR=<path>` installs to another folder (single agent). `-SkipDeps` / `--skip-deps` copies the skills only. `-Only a,b` / `-Skip a,b` limit the third-party installs (PowerShell).
 
-### C. Single `.skill` file
+### 2. Plugin marketplace
+
+Claude Code:
+
+```bash
+claude plugin marketplace add rhad-Agency/RHAD_Li_Skill
+claude plugin install rhad-linkedin@rhad-linkedin-skill
+```
+
+Codex:
+
+```bash
+codex plugin marketplace add rhad-Agency/RHAD_Li_Skill
+```
+
+Then enable `rhad-linkedin` from the plugin list in the Codex app. Or in a project's `.codex/config.toml`:
+
+```toml
+[plugins."rhad-linkedin@rhad-linkedin-skill"]
+enabled = true
+```
+
+Private repo: sign in first (`gh auth login` or your git credential helper) so the clone works.
+
+Plugins deliver the skills only. Run the installer (with `-SkipDeps` omitted) or its dependency step for the third-party tools.
+
+### 3. Single `.skill` file
 
 ```bash
 node tools/build-skill.mjs        # writes dist/rhad-linkedin.skill
 ```
 
-Unzip it into `~/.claude/skills/`. It contains the skill and the five bundled skills. Third-party dependencies still come from the installer inside it (`scripts/install-skills.ps1` or `.sh`).
+Unzip it into `~/.claude/skills/` (Claude Code) or `~/.agents/skills/` (Codex). It contains the skill and the five bundled skills. Dependencies come from the installer inside it: `scripts/install-skills.ps1 -Agent codex` or `bash scripts/install-skills.sh --agent codex`.
 
-After any install, restart Claude Code and run:
+After any install, restart the agent and run:
 
 ```bash
-node ~/.claude/skills/rhad-linkedin/scripts/preflight.mjs
+node <skills folder>/rhad-linkedin/scripts/preflight.mjs
 ```
 
 ## Third-party dependencies
 
-Installed by `install.*` after you confirm. Every command is printed before it runs. Full list and reasons: `skills/rhad-linkedin/references/skills-registry.md`. Edit `skills/rhad-linkedin/scripts/skills-manifest.json` to change them.
+Installed by the installer after you confirm. Every command is printed before it runs. The commands for each agent live in `plugins/rhad-linkedin/skills/rhad-linkedin/scripts/skills-manifest.json`. Reasons and details: `references/skills-registry.md`.
 
 | Dependency | Source | Used for |
 |---|---|---|
@@ -83,11 +111,11 @@ Installed by `install.*` after you confirm. Every command is printed before it r
 | linkedin-skills | github.com/sergebulaev/linkedin-skills (MIT) | Post writer, humanizer, hook extractor and more |
 | Node 22+, Chrome or Edge | | Scripts and rendering |
 
-Image generation is not a dependency. The skill writes prompts for **ChatGPT** and uses ChatGPT's built-in image generation if it is already running there.
+Image generation is not a dependency. The skill writes prompts for **ChatGPT** and uses ChatGPT's built-in image generation if it is already running there (for example in Codex with ImageGen).
 
 ## Use
 
-Ask Claude:
+Ask Claude Code or Codex:
 
 - "Make a RHAD LinkedIn carousel about ..."
 - "RHAD45 poster post about missed enquiries"
@@ -102,7 +130,7 @@ Hard rules it enforces: brand first, analyse media before deciding, never invent
 | `analyze-media.mjs` | ffprobe and ffmpeg analysis: contact sheet, keyframes, scene changes, loudness, silence, flags |
 | `brand-lint.mjs` | Fails copy, HTML and prompt files that break the brand rules |
 | `render-post.mjs` | HTML to PNG per slide and carousel PDF via headless Chrome or Edge |
-| `preflight.mjs` | Reports which tools and companion skills are present |
+| `preflight.mjs` | Reports which tools and companion skills are present for both agents |
 | `install-skills.ps1`, `.sh` | Third-party installer used by the root `install.*` |
 
 ## Develop
@@ -112,11 +140,11 @@ node tools/validate.mjs          # repo checks, same as CI
 node tools/build-skill.mjs       # build dist/rhad-linkedin.skill
 ```
 
-Change brand guidance in `skills/rhad-linkedin/references/` and `assets/`. Bump the version in `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json` and `skills/rhad-linkedin/SKILL.md` together (validate checks they match), and add a line to `CHANGELOG.md`.
+Read `AGENTS.md` first. Change brand guidance in `skills/rhad-linkedin/references/` and `assets/`. Bump the version in every manifest at once (validate checks they match) and add a line to `CHANGELOG.md`.
 
 ## Privacy
 
-This repo contains: internal RHAD45 strategy and pricing notes (`references/rhad45-*-source.md`), client names (YHM, Swaraj, Beato), logos and fonts, and reference creative from RHAD and RHAD45 sites and the shared Creatives folder. No credentials, API keys or personal contact details are included, and `validate.mjs` fails the build if it finds key-like strings. Publish it as a **private** repository. If you ever make it public, remove the `*-source.md` strategy files, the client names and the reference images first.
+This repo contains: internal RHAD45 strategy and pricing notes (`references/rhad45-*-source.md`), client names (YHM, Swaraj, Beato), logos and fonts, and reference creative from RHAD and RHAD45 sites and the shared Creatives folder. No credentials, API keys or personal contact details are included, and `validate.mjs` fails the build if it finds key-like strings. Keep it a **private** repository. If you ever make it public, remove the `*-source.md` strategy files, the client names and the reference images first.
 
 ## Licence
 

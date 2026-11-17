@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0
+
+- Works in Claude Code and Codex from one copy of the skills: shared plugin directory `plugins/rhad-linkedin` with `.claude-plugin` and `.codex-plugin` manifests, a Codex marketplace at `.agents/plugins/marketplace.json`, `agents/openai.yaml`, plugin icons
+- Installers take an agent target (`claude`, `codex`, `both`, `auto`) and write to `~/.claude/skills` and/or `~/.agents/skills`. Dependency commands are defined per agent in `skills-manifest.json`
+- `preflight.mjs` checks both agents. `AGENTS.md` and `CLAUDE.md` added for contributors
+- Fixed: variable font files were missing from the package. `render-post.mjs` now serves files over a temporary local server so fonts load
+- Validation covers Codex manifest limits and both marketplaces
+
 ## 1.0.0
 
 First release.

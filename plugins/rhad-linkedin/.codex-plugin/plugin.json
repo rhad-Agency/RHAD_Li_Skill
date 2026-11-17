@@ -1,0 +1,44 @@
+{
+  "name": "rhad-linkedin",
+  "version": "1.1.0",
+  "description": "RHAD-branded LinkedIn post production: brief intake, ffmpeg media analysis, hooks and copy in RHAD voice, poster, carousel and video visuals, concept-first ChatGPT image prompts, brand lint and an approval step. Covers RHAD and RHAD45. Bundles motion-designer, ad-creative, content-pattern-analyzer-sms, platform-strategy-sms and social-seo-researcher.",
+  "author": {
+    "name": "RHAD",
+    "url": "https://www.rhad.agency/"
+  },
+  "homepage": "https://github.com/rhad-Agency/RHAD_Li_Skill",
+  "repository": "https://github.com/rhad-Agency/RHAD_Li_Skill",
+  "license": "UNLICENSED",
+  "keywords": [
+    "linkedin",
+    "brand",
+    "carousel",
+    "poster",
+    "ffmpeg",
+    "rhad",
+    "rhad45",
+    "social-media"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "RHAD LinkedIn",
+    "shortDescription": "RHAD-branded LinkedIn posts",
+    "longDescription": "End-to-end LinkedIn post production for RHAD and RHAD45: brief intake, ffmpeg analysis of supplied media, hooks and copy in RHAD voice, poster, carousel and video visuals, concept-first ChatGPT image prompts, brand lint and an approval step. Never publishes without an explicit yes.",
+    "developerName": "RHAD",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://www.rhad.agency/",
+    "defaultPrompt": [
+      "Make a RHAD LinkedIn carousel about our latest client lesson.",
+      "RHAD45 poster post about missed enquiries.",
+      "Turn this video into a RHAD LinkedIn post."
+    ],
+    "brandColor": "#D90A2C",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png"
+  }
+}

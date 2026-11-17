@@ -21,7 +21,7 @@ Requires `ffmpeg` and `ffprobe` on PATH. If missing, run the installer or tell t
 | `contact-sheet.jpg` | Tiled keyframes with timestamps burned in (video) or a preview (image) |
 | `frames/` | Individual keyframes at scene changes and the midpoint |
 
-Open `contact-sheet.jpg` and 3 to 6 frames with the Read tool. **Look.** The numbers tell you what is technically there. Your eyes tell you what is in it.
+Open `contact-sheet.jpg` and 3 to 6 frames with your image viewer (Read in Claude Code, view_image or opening the file in Codex). **Look.** The numbers tell you what is technically there. Your eyes tell you what is in it.
 
 ## Media Read (write this before anything else)
 

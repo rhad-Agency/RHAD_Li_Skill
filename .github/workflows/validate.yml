@@ -18,9 +18,11 @@ jobs:
       - name: Check shell installers
         run: |
           bash -n install.sh
-          bash -n skills/rhad-linkedin/scripts/install-skills.sh
+          bash -n plugins/rhad-linkedin/skills/rhad-linkedin/scripts/install-skills.sh
       - name: Dry-run installer
-        run: bash install.sh --dry-run --skip-deps
+        run: |
+          bash install.sh --dry-run --skip-deps --agent claude
+          bash install.sh --dry-run --skip-deps --agent codex
       - name: Build .skill
         run: node tools/build-skill.mjs
       - uses: actions/upload-artifact@v4

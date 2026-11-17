@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // Build dist/rhad-linkedin.skill: the skill plus the five bundled skills inside bundled-skills/.
+// Works for Claude Code (unzip into ~/.claude/skills) and Codex (unzip into ~/.agents/skills).
 // Usage: node tools/build-skill.mjs
 import { cpSync, mkdirSync, rmSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
@@ -8,7 +9,7 @@ import { spawnSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const skills = join(repo, 'skills');
+const skills = join(repo, 'plugins', 'rhad-linkedin', 'skills');
 const main = 'rhad-linkedin';
 const stage = join(tmpdir(), `rhad-linkedin-build-${process.pid}`);
 const out = join(repo, 'dist', `${main}.skill`);

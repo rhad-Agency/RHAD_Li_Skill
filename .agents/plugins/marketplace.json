@@ -1,0 +1,20 @@
+{
+  "name": "rhad-linkedin-skill",
+  "interface": {
+    "displayName": "RHAD LinkedIn Skill"
+  },
+  "plugins": [
+    {
+      "name": "rhad-linkedin",
+      "source": {
+        "source": "local",
+        "path": "./plugins/rhad-linkedin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

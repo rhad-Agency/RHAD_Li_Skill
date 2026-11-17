@@ -1,6 +1,6 @@
 # Companion skills and tools
 
-`scripts/preflight.mjs` checks all of these. `scripts/install-skills.ps1` / `.sh` installs what is missing (with `-DryRun` to preview). Ask the user before installing.
+`scripts/preflight.mjs` checks all of these for Claude Code and Codex. `<agent>` is `claude-code` or `codex`. `scripts/install-skills.ps1` / `.sh` installs what is missing (with `-DryRun` to preview). Ask the user before installing.
 
 ## Installed by the script
 
@@ -9,12 +9,12 @@
 | **ffmpeg / ffprobe** | gyan.dev / ffmpeg.org | `winget install Gyan.FFmpeg` (Windows), `brew install ffmpeg` (macOS), apt (Linux) | Media analysis, edits, export |
 | **playwright-cli** | github.com/microsoft/playwright-cli | `npm install -g @playwright/cli@latest` then `playwright-cli install --skills` | Render checks, screenshots, page inspection |
 | **impeccable** | github.com/pbakaus/impeccable | `npx impeccable install` (interactive: say yes to the design hook) | Critique, audit, polish, slop detection for HTML visuals |
-| **taste-skill** | github.com/Leonxlnx/taste-skill | `npx skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend` | Anti-slop art direction and look-and-fix loop (brand overrides its direction) |
+| **taste-skill** | github.com/Leonxlnx/taste-skill | `npx skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend -g -a <agent>` | Anti-slop art direction and look-and-fix loop (brand overrides its direction) |
 | **hyperframes** | github.com/heygen-com/hyperframes | `npx hyperframes skills update` (core set) | HTML to video |
-| **remotion** | github.com/remotion-dev/skills | `npx skills add remotion-dev/skills` | React to video |
-| **ui-ux-pro-max (uiuxpro)** | github.com/nextlevelbuilder/ui-ux-pro-max-skill | `npm install -g ui-ux-pro-max-cli` then `uipro init` | UX and accessibility checks |
-| **gsap-skills ("GASP")** | github.com/greensock/gsap-skills | `npx skills add https://github.com/greensock/gsap-skills` | Correct GSAP timelines for motion |
-| **linkedin-skills** | github.com/sergebulaev/linkedin-skills (MIT) | `claude plugin marketplace add sergebulaev/linkedin-skills` then `claude plugin install linkedin-skills@linkedin-skills` | 12 LinkedIn skills: post-writer, humanizer, hook-extractor, content-planner, repurposer, profile-optimizer, comment-drafter and more |
+| **remotion** | github.com/remotion-dev/skills | `npx skills add remotion-dev/skills -g -a <agent>` | React to video |
+| **ui-ux-pro-max (uiuxpro)** | github.com/nextlevelbuilder/ui-ux-pro-max-skill | `npm install -g ui-ux-pro-max-cli` then `uipro init --ai claude` or `--ai codex` | UX and accessibility checks |
+| **gsap-skills ("GASP")** | github.com/greensock/gsap-skills | `npx skills add https://github.com/greensock/gsap-skills -g -a <agent>` | Correct GSAP timelines for motion |
+| **linkedin-skills** | github.com/sergebulaev/linkedin-skills (MIT) | Claude Code: `claude plugin marketplace add sergebulaev/linkedin-skills` then `claude plugin install linkedin-skills@linkedin-skills`. Codex: `npx skills add sergebulaev/linkedin-skills -g -a codex` | 12 LinkedIn skills: post-writer, humanizer, hook-extractor, content-planner, repurposer, profile-optimizer, comment-drafter and more |
 
 "Impecable", "Playwrite CLI", "Taste", "uiuxpro" and "GASP" in the original brief were mapped to the repositories above. If the user meant a different tool, change the list in `scripts/skills-manifest.json`.
 
